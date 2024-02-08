@@ -25,3 +25,16 @@ services:
       - MYSQL_HOST=mysqldb
     depends_on:
       - mysqldb
+
+  frontend:
+    build:
+      context: ./frontend
+      target: dev
+    # environment:
+    #   NODE_ENV: production
+    ports:
+      - 5173:5173
+      - 9229:9229
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+      - ./frontend/public:/usr/src/app/public
